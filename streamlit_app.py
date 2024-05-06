@@ -13,8 +13,8 @@ def display_header_image():
 # Intro page
 def intro_page():
     display_header_image()
-    st.title("Welcome to the Personality Quiz")
-    st.write("This quiz will help determine your personality based on your preferences.")
+    st.title("What Snowflake Product Are You?")
+    st.write("In anticipation for the upcoming Summit, find out which Snowflake product you are based on your answers. You will also be recommended a Summit session at the end to help you lean into your newly discovered “spirit product.”")
     if st.button("Start Quiz"):
         st.session_state.current_question_index = 1
         st.experimental_rerun()
@@ -22,7 +22,7 @@ def intro_page():
 # Question pages
 def question_page(question, options):
     display_header_image()
-    st.title("Personality Quiz")
+    st.title("What Snowflake Product Are You?")
     st.header("Question:")
     st.write(question)
     selected_option = st.radio("Choose one:", options)
@@ -34,7 +34,7 @@ def question_page(question, options):
 # Results page
 def result_page():
     display_header_image()
-    st.title("Personality Quiz - Results")
+    st.title("Results - What Snowflake Product Are You?")
     st.write("Thank you for completing the quiz!")
 
     # Get answers
@@ -44,29 +44,29 @@ def result_page():
     personality = determine_personality(answers)
 
     # Display personality type
-    st.write("Your personality type is:", personality)
+    st.write("Your product is:", personality)
 
     # Display personality description and image
     personality_descriptions = {
-        "Type 1": {
-            "description": "You are an introverted and calm individual. You enjoy spending time alone, reading books, and relaxing at the beach.",
-            "image": "https://cdn.cookielaw.org/logos/cb85e692-4053-4d0a-8dda-d24b5daa8b06/da03e0fe-832b-44c4-8eb4-08e1f224aa22/SNO-SnowflakeLogo_blue.png"
+        "Snowflake Cortex": {
+            "description": "You're innovative. You're always looking for the next big thing. You're knowledgeable on a lot of different topics (so you're also great at trivia).  \nSession: Platform Keynote",
+            "image": "https://www.snowflake.com/wp-content/uploads/2023/11/Figure-1-platform.png"
         },
-        "Type 2": {
-            "description": "You are an introverted and imaginative person. You love spending time alone, reading books, and exploring the mountains.",
-            "image": "https://cdn.cookielaw.org/logos/cb85e692-4053-4d0a-8dda-d24b5daa8b06/da03e0fe-832b-44c4-8eb4-08e1f224aa22/SNO-SnowflakeLogo_blue.png"
+        "Data Clean Rooms": {
+            "description": "You're collaborative. You try to include everyone in the conversation. You'd rather work on a group project than alone.  \nSession: “How Snowflake Data Clean Rooms Are Powering Advanced, AI-Driven, Multi-party Collaboration”",
+            "image": "https://www.snowflake.com/wp-content/uploads/2022/04/ShareButNotShow-3.png"
         },
-        "Type 3": {
-            "description": "You are an outgoing and adventurous person. You enjoy outdoor activities like hiking and spending time at the beach.",
-            "image": "https://cdn.cookielaw.org/logos/cb85e692-4053-4d0a-8dda-d24b5daa8b06/da03e0fe-832b-44c4-8eb4-08e1f224aa22/SNO-SnowflakeLogo_blue.png"
+        "Snowflake Horizon": {
+            "description": "You're responsible. You're the one at the airport making sure everyone has their passport and tickets. You have a spreadsheet for every occasion.  \nSession: “What's New: Snowflake Horizon for Data Teams”",
+            "image": "https://s26.q4cdn.com/463892824/files/doc_multimedia/Snowflake_Snowday23_PR_Horizon_Diagram.jpg"
         },
-        "Type 4": {
-            "description": "You are an outgoing and adventurous individual. You love outdoor activities like hiking and exploring the mountains.",
-            "image": "https://cdn.cookielaw.org/logos/cb85e692-4053-4d0a-8dda-d24b5daa8b06/da03e0fe-832b-44c4-8eb4-08e1f224aa22/SNO-SnowflakeLogo_blue.png"
+        "Streamlit": {
+            "description": "You're creative. You love to make things visually pleasing. Your home is full of nifty tools, like an efficient vegetable cutter or handy phone stand.  \nSession: Builders Keynote",
+            "image": "https://www.snowflake.com/wp-content/uploads/2024/03/Features.png"
         }
     }
 
-    st.write("Description:")
+
     if personality in personality_descriptions:
         st.write(personality_descriptions[personality]["description"])
         st.image(personality_descriptions[personality]["image"])
@@ -77,10 +77,22 @@ def result_page():
 def determine_personality(answers):
     # Define personality types and their corresponding answer combinations
     personality_types = {
-        ("Spring", "Blue", "Reading", "Beach"): "Type 1",
-        ("Spring", "Blue", "Reading", "Mountains"): "Type 2",
-        ("Spring", "Blue", "Hiking", "Beach"): "Type 3",
-        ("Spring", "Blue", "Hiking", "Mountains"): "Type 4",
+        ("How productive it is in harvesting data insights!", "The data is ingested very fast and efficiently", "Compile a robust inventory of resources and guides for them to follow", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Cortex",
+        ("How productive it is in harvesting data insights!", "The data is ingested without any errors or inconsistencies", "Compile a robust inventory of resources and guides for them to follow", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Cortex",
+        ("How productive it is in harvesting data insights!", "The data is ingested without any errors or inconsistencies", "Set up a meeting and walk them through the platform yourself", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Cortex",
+        ("How productive it is in harvesting data insights!", "The data is ingested very fast and efficiently", "Set up a meeting and walk them through the platform yourself", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Cortex",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested without any errors or inconsistencies", "Set up a meeting and walk them through the platform yourself", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Data Clean Rooms",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested very fast and efficiently", "Set up a meeting and walk them through the platform yourself", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Data Clean Rooms",
+        ("How productive it is in harvesting data insights!", "The data is ingested very fast and efficiently", "Set up a meeting and walk them through the platform yourself", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Data Clean Rooms",
+        ("How productive it is in harvesting data insights!", "The data is ingested without any errors or inconsistencies", "Set up a meeting and walk them through the platform yourself", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Data Clean Rooms",
+        ("How productive it is in harvesting data insights!", "The data is ingested very fast and efficiently", "Compile a robust inventory of resources and guides for them to follow", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Snowflake Horizon",
+        ("How productive it is in harvesting data insights!", "The data is ingested without any errors or inconsistencies", "Compile a robust inventory of resources and guides for them to follow", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Snowflake Horizon",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested without any errors or inconsistencies", "Compile a robust inventory of resources and guides for them to follow", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Horizon",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested very fast and efficiently", "Compile a robust inventory of resources and guides for them to follow", "The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud"): "Snowflake Horizon",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested without any errors or inconsistencies", "Set up a meeting and walk them through the platform yourself", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Streamlit",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested very fast and efficiently", "Set up a meeting and walk them through the platform yourself", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Streamlit",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested without any errors or inconsistencies", "Compile a robust inventory of resources and guides for them to follow", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Streamlit",
+        ("How expansive it is - the possibilities are endless!", "The data is ingested very fast and efficiently", "Compile a robust inventory of resources and guides for them to follow", "The Beauty in the Numbers: Making Data Fun and Accessible"): "Streamlit",
         # Add more combinations as needed
     }
 
@@ -101,16 +113,16 @@ def main():
         intro_page()
     elif st.session_state.current_question_index < 5:
         questions = [
-            "Which season do you prefer?",
-            "What is your favorite color?",
-            "Choose a hobby:",
-            "What is your ideal vacation destination?"
+            "What's your favorite thing about the Snowflake platform?",
+            "Which do you care more about when ingesting data?",
+            "Someone has a question about using Snowflake. Do you…",
+            "What Summit session would you (hypothetically) host?"
         ]
         options = [
-            ("Spring", "Fall"),
-            ("Blue", "Red"),
-            ("Reading", "Hiking"),
-            ("Beach", "Mountains")
+            ("How productive it is in harvesting data insights!", "How expansive it is - the possibilities are endless!"),
+            ("The data is ingested very fast and efficiently", "The data is ingested without any errors or inconsistencies"),
+            ("Compile a robust inventory of resources and guides for them to follow", "Set up a meeting and walk them through the platform yourself"),
+            ("The Architecture of Snowflake: Understanding the Intricacies of the Data Cloud", "The Beauty in the Numbers: Making Data Fun and Accessible")
         ]
         question = questions[st.session_state.current_question_index - 1]
         option = options[st.session_state.current_question_index - 1]
