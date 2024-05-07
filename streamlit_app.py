@@ -14,7 +14,7 @@ def display_header_image():
 def intro_page():
     display_header_image()
     st.title("What Snowflake Product Are You?")
-    st.write("In anticipation for the upcoming Summit, find out which Snowflake product you are based on your answers. You will also be recommended a Summit session at the end to help you lean into your newly discovered “spirit product.”")
+    st.write("In anticipation for the upcoming Data Cloud Summit, find out which Snowflake product you are based on your answers. You will also be recommended a Summit session at the end to help you lean into your newly discovered “spirit product.”  \n\nFor internal sharing only.")
     if st.button("Start Quiz"):
         st.session_state.current_question_index = 1
         st.experimental_rerun()
@@ -62,7 +62,7 @@ def result_page():
         },
         "Streamlit": {
             "description": "You're creative. You love to make things visually pleasing. Your home is full of nifty tools, like an efficient vegetable cutter or handy phone stand.  \nSession: Builders Keynote",
-            "image": "https://www.snowflake.com/wp-content/uploads/2024/03/Features.png"
+            "image": "https://images.datacamp.com/image/upload/v1640050215/image27_frqkzv.png"
         }
     }
 
@@ -116,7 +116,7 @@ def main():
             "What's your favorite thing about the Snowflake platform?",
             "Which do you care more about when ingesting data?",
             "Someone has a question about using Snowflake. Do you…",
-            "What Summit session would you (hypothetically) host?"
+            "What Data Cloud Summit session would you (hypothetically) host?"
         ]
         options = [
             ("How productive it is in harvesting data insights!", "How expansive it is - the possibilities are endless!"),
