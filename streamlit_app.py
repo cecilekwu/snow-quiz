@@ -13,8 +13,8 @@ def display_header_image():
 # Intro page
 def intro_page():
     display_header_image()
-    st.title("What Snowflake Product Are You?")
-    st.write("In anticipation for the upcoming Data Cloud Summit, find out which Snowflake product you are based on your answers. You will also be recommended a Summit session at the end to help you lean into your newly discovered “spirit product.”  \n\nFor internal sharing only.")
+    st.title("What Snowflake Feature Are You?")
+    st.write("In anticipation for the upcoming Data Cloud Summit, find out which Snowflake feature you are based on your answers. You will also be recommended a Summit session at the end to help you lean into your newly discovered “spirit feature.”  \n\nFor internal sharing only.")
     if st.button("Start Quiz"):
         st.session_state.current_question_index = 1
         st.experimental_rerun()
@@ -22,7 +22,7 @@ def intro_page():
 # Question pages
 def question_page(question, options):
     display_header_image()
-    st.title("What Snowflake Product Are You?")
+    st.title("What Snowflake Feature Are You?")
     st.header("Question:")
     st.write(question)
     selected_option = st.radio("Choose one:", options)
@@ -34,7 +34,7 @@ def question_page(question, options):
 # Results page
 def result_page():
     display_header_image()
-    st.title("Results - What Snowflake Product Are You?")
+    st.title("Results - What Snowflake Feature Are You?")
     st.write("Thank you for completing the quiz!")
 
     # Get answers
@@ -44,7 +44,7 @@ def result_page():
     personality = determine_personality(answers)
 
     # Display personality type
-    st.write("Your product is:", personality)
+    st.write("Your feature is:", personality)
 
     # Display personality description and image
     personality_descriptions = {
